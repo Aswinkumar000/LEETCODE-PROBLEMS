@@ -17,11 +17,12 @@ public:
                 if(nums[i] + nums[j]==target){
                    index.push_back(i);
                    index.push_back(j);
-                   return index;
+                  return index;
                 }
 
             }
         }
+         return index;
     }
 };
 
