@@ -1,0 +1,78 @@
+Given an array of strings words, return the words that can be typed using letters of the alphabet on only one row of American keyboard like the image below.
+
+Note that the strings are case-insensitive, both lowercased and uppercased of the same letter are treated as if they are at the same row.
+
+In the American keyboard:
+
+the first row consists of the characters "qwertyuiop",
+the second row consists of the characters "asdfghjkl", and
+the third row consists of the characters "zxcvbnm".
+
+
+SOURCE CODE:(C++)
+class Solution {
+public:
+    vector<string> findWords(vector<string>& words) {
+         vector<string> res;
+         map<char,int> mp;
+         string row1="qwertyuiop";
+         string row2="asdfghjkl";
+         string row3="zxcvbnm";
+         for(char c:row1){
+            mp[c]=1;
+         }
+         for(char c:row2){
+            mp[c]=2;
+         }
+         for(char c: row3){
+            mp[c]=3;
+         }
+         
+         for (int i=0;i<words.size();i++){
+            bool valid =true;
+            int row = mp[tolower(words[i][0])];
+
+            for(int j=1;j<words[i].length();j++){
+                if(mp[tolower(words[i][j])]!=row){
+                valid =false;
+                break;
+               
+            }
+
+            }
+            if(valid){
+                res.push_back(words[i]);
+            }
+            
+         }
+              return res;
+         
+       
+    }
+
+};
+
+
+OUTPUT:
+
+Example 1:
+
+Input: words = ["Hello","Alaska","Dad","Peace"]
+
+Output: ["Alaska","Dad"]
+
+Explanation:
+
+Both "a" and "A" are in the 2nd row of the American keyboard due to case insensitivity.
+
+Example 2:
+
+Input: words = ["omk"]
+
+Output: []
+
+Example 3:
+
+Input: words = ["adsdf","sfd"]
+
+Output: ["adsdf","sfd"]
