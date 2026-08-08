@@ -1,0 +1,21 @@
+Given a string s, calculate its reverse degree.
+
+The reverse degree is calculated as follows:
+
+For each character, multiply its position in the reversed alphabet ('a' = 26, 'b' = 25, ..., 'z' = 1) with its position in the string (1-indexed).
+Sum these products for all characters in the string.
+Return the reverse degree of s
+
+CODE:
+int reverseDegree(char* s) {
+    int c=0;
+    int z=0;
+    c=strlen(s);
+    int j=0;
+    for(int i=1;i<=c;i++){
+        int d=s[j];
+         z=z+((123-d)*i);
+         j++;
+    }
+    return z;
+}
