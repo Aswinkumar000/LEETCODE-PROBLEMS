@@ -1,0 +1,74 @@
+Given an m x n matrix, return all elements of the matrix in spiral order.
+Example 1:
+
+
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [1,2,3,6,9,8,7,4,5]
+Example 2:
+
+
+Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+ 
+
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 10
+-100 <= matrix[i][j] <= 100
+
+CODE:
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* spiralOrder(int** matrix, int matrixSize, int* matrixColSize, int* returnSize) {
+
+    int r = matrixSize, c = *matrixColSize;
+    int top = 0;
+    int bottom = r - 1;
+    int left = 0;
+    int right = c - 1;
+int *arra=malloc((r*c)*sizeof(int));
+if (matrixSize == 0) {
+    *returnSize = 0;
+    return NULL;
+}
+*returnSize=r*c;
+    int k =0;
+
+    while(top <= bottom && left <= right){
+
+        for(int j = left; j <= right; j++){
+            int i = top;
+            arra[k] = matrix[i][j];
+            k++;
+        }
+        top++;
+
+        for(int i = top; i <= bottom; i++){
+            int j = right;
+            arra[k] = matrix[i][j];
+            k++;
+        }
+        right--;
+       if (top <= bottom) {
+        for(int j = right; j >= left; j--){
+            int i = bottom;
+            arra[k] = matrix[i][j];
+            k++;
+        }
+        bottom--;
+        }
+       if (left <= right) {
+        for(int i = bottom; i >= top; i--){
+            int j = left;
+            arra[k] = matrix[i][j];
+            k++;
+        }
+        left++;
+       }
+    }
+
+   return arra;
+}
