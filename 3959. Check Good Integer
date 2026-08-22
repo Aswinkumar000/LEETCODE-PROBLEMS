@@ -1,0 +1,12 @@
+CODE:
+bool checkGoodInteger(int n) {
+    int a=n;
+    int s=0,sq=0;
+    while(a>0){
+        int r=a%10;
+        s=s+r;
+        sq=sq+(r*r);
+        a=a/10;
+    }
+    return (sq-s)>=50;
+}
