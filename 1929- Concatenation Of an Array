@@ -17,6 +17,19 @@ public:
     }
 };
 
+CODE: C
+int* getConcatenation(int* nums, int numsSize, int* returnSize) {
+    int *arr=malloc((numsSize *2)*sizeof(int));
+    *returnSize=numsSize*2;
+    int j=0;
+    for(int k=0;k<2;k++){
+    for(int i=0;i<numsSize;i++){
+        arr[j++]=nums[i];
+        
+    }
+    }
+    return arr;
+}
 
 OUTPUT;
 
