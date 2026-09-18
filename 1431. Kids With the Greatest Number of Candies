@@ -1,0 +1,33 @@
+There are n kids with candies. You are given an integer array candies, where each candies[i] represents the number of candies the ith kid has, and an integer extraCandies, denoting the number of extra candies that you have.
+
+Return a boolean array result of length n, where result[i] is true if, after giving the ith kid all the extraCandies, they will have the greatest number of candies among all the kids, or false otherwise.
+
+Note that multiple kids can have the greatest number of candies.
+
+CODE:
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+bool* kidsWithCandies(int* candies, int candiesSize, int extraCandies, int* returnSize) {
+    bool * arr=malloc(candiesSize* sizeof(bool));
+    *returnSize=candiesSize;
+int max=candies[0];
+     for(int i=0;i<candiesSize;i++){
+             if(max<candies[i]){
+                max=candies[i];
+             }
+     }
+
+    for(int i=0;i<candiesSize;i++){
+        candies[i]+=extraCandies;
+        if(candies[i]>=max){
+            arr[i]=true;
+        }
+        else 
+        arr[i]=false;
+    }
+    
+    
+   
+    return arr;
+}
