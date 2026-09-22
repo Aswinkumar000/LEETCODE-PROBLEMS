@@ -1,0 +1,37 @@
+You are given a string s and an integer k.
+
+Reverse the first k characters of s and return the resulting string.
+
+ Example 1:
+
+Input: s = "abcd", k = 2
+
+Output: "bacd"
+
+Explanation:​​​​​​​
+
+The first k = 2 characters "ab" are reversed to "ba". The final resulting string is "bacd".
+
+Example 2:
+
+Input: s = "xyz", k = 3
+
+Output: "zyx"
+
+Explanation:
+
+The first k = 3 characters "xyz" are reversed to "zyx". The final resulting string is "zyx"
+
+CODE:
+char* reversePrefix(char* s, int k) {
+    int left=0;
+    int right=k-1;
+    while(left<=right){
+        char t=s[left];
+        s[left]=s[right];
+        s[right]=t;
+        left++;
+        right--;
+    }
+    return s;
+}
