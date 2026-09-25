@@ -6,7 +6,7 @@ Example 1:
 Input: head = [1,2,2,1]
 Output: true
 
-CODE:
+CODE: USING ARRAY
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -50,5 +50,44 @@ while(temp!=NULL){
     }
    }
    return true;
+
+}
+
+CODE: USING FAST /SLOW POINTERS
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+bool isPalindrome(struct ListNode* head) {
+    struct ListNode* slow=head;
+    struct ListNode* fast=head;
+    struct ListNode* prev=NULL;
+    struct ListNode* next=head;
+     while(fast!=NULL && fast->next!=NULL){
+        slow=slow->next;
+        fast=fast->next->next;
+     }
+    while(slow!=NULL){
+        next=slow->next;
+        slow->next=prev;
+        prev=slow;
+        slow=next;
+    }
+
+  struct ListNode* first=head;
+  struct ListNode* sec=prev;
+   while(sec!=NULL){
+    if(first->val != sec->val){
+        return false;
+    }
+    first=first->next;
+    sec=sec->next;
+   }
+
+     return true;
+
 
 }
